@@ -543,130 +543,66 @@
             <div class="register-side">
                 <div class="register-box">
                     <img src="{{ asset('logo.png') }}" alt="StudyHub Logo" class="register-logo">
-                    <h1 class="register-heading">Únete a StudyHub</h1>
+                    <h1 class="register-heading">Crear Cuenta</h1>
                     
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-                        
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="name" class="form-label">Nombre</label>
-                                    <div class="input-group">
-                                        <div class="input-icon">
-                                            <i class="bi bi-person"></i>
+                                    <label for="name" class="form-label">Nombre Completo</label>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    @error('name')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
                                         </div>
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Tu nombre">
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="lastName" class="form-label">Apellido</label>
-                                    <div class="input-group">
-                                        <div class="input-icon">
-                                            <i class="bi bi-person"></i>
-                                        </div>
-                                        <input id="lastName" type="text" class="form-control @error('lastName') is-invalid @enderror" name="lastName" value="{{ old('lastName') }}" required autocomplete="lastName" placeholder="Tu apellido">
-                                        @error('lastName')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="email" class="form-label">Correo Electrónico</label>
-                            <div class="input-group">
-                                <div class="input-icon">
-                                    <i class="bi bi-envelope"></i>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Correo Electrónico</label>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                    @error('email')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="correo@ejemplo.com">
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="password" class="form-label">Contraseña</label>
-                                    <div class="input-group">
-                                        <div class="input-icon">
-                                            <i class="bi bi-lock"></i>
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    @error('password')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
                                         </div>
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Mínimo 8 caracteres">
-                                        <span class="toggle-password" onclick="togglePasswordVisibility('password')">
-                                            <i class="bi bi-eye"></i>
-                                        </span>
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+                                    @enderror
                                 </div>
                             </div>
-                            
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="password-confirm" class="form-label">Confirmar</label>
-                                    <div class="input-group">
-                                        <div class="input-icon">
-                                            <i class="bi bi-lock-fill"></i>
-                                        </div>
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirma tu contraseña">
-                                        <span class="toggle-password" onclick="togglePasswordVisibility('password-confirm')">
-                                            <i class="bi bi-eye"></i>
-                                        </span>
-                                    </div>
+                                    <label for="password-confirm" class="form-label">Confirmar Contraseña</label>
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="terms" id="terms" required>
-                            <label class="form-check-label" for="terms">
-                                Acepto los <a href="#">términos y condiciones</a> y la <a href="#">política de privacidad</a>
-                            </label>
+
+                        <div class="form-group">
+                            <button type="submit" class="primary-btn register-btn">
+                                Registrarse
+                            </button>
                         </div>
-                        
-                        <button type="submit" class="register-btn">
-                            Crear Cuenta
-                        </button>
-                        
-                        <div class="divider">O regístrate con</div>
-                        
-                        <div class="social-login">
-                            <a href="#" class="social-btn">
-                                <i class="bi bi-google"></i>
-                            </a>
-                            <a href="#" class="social-btn">
-                                <i class="bi bi-facebook"></i>
-                            </a>
-                            <a href="#" class="social-btn">
-                                <i class="bi bi-github"></i>
-                            </a>
-                        </div>
-                        
+
                         <div class="login-link">
-                            ¿Ya tienes cuenta? <a href="{{ route('login') }}">Iniciar Sesión</a>
-                        </div>
-                        
-                        <div class="home-link">
-                            <a href="/"><i class="bi bi-arrow-left"></i> Volver al inicio</a>
+                            ¿Ya tienes una cuenta? <a href="{{ route('login') }}">Inicia sesión</a>
                         </div>
                     </form>
                 </div>

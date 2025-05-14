@@ -64,3 +64,47 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Configuración de la Autenticación
+
+Este proyecto utiliza MySQL con phpMyAdmin para la base de datos. Sigue estos pasos para configurar la autenticación:
+
+1. Configura tu archivo `.env` con los siguientes parámetros para la base de datos:
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=studyhub
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+2. Crea una base de datos llamada `studyhub` en phpMyAdmin.
+
+3. Ejecuta las migraciones para crear las tablas necesarias:
+
+```bash
+php artisan migrate
+```
+
+4. Genera una clave de aplicación:
+
+```bash
+php artisan key:generate
+```
+
+5. Inicia el servidor de desarrollo:
+
+```bash
+php artisan serve
+```
+
+6. Visita `http://localhost:8000` en tu navegador.
+
+## Funcionalidades de Autenticación
+
+- Registro de usuarios nuevos
+- Inicio de sesión con correo electrónico y contraseña
+- Cerrar sesión
+- Acceso al dashboard protegido (solo usuarios autenticados)
