@@ -9,6 +9,10 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
+/**
+ * Clase para enviar correos de confirmación al usuario cuando 
+ * envía un mensaje desde el formulario de contacto
+ */
 class ContactFormConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
@@ -17,6 +21,7 @@ class ContactFormConfirmation extends Mailable
 
     /**
      * Create a new message instance.
+     * Constructor que inicializa la clase con los datos del formulario
      */
     public function __construct(array $data)
     {
@@ -25,6 +30,7 @@ class ContactFormConfirmation extends Mailable
 
     /**
      * Get the message envelope.
+     * Define el sobre del mensaje (asunto, remitente, destinatarios)
      */
     public function envelope(): Envelope
     {
@@ -35,6 +41,7 @@ class ContactFormConfirmation extends Mailable
 
     /**
      * Get the message content definition.
+     * Define qué vista se usará para generar el contenido HTML del correo
      */
     public function content(): Content
     {
@@ -45,6 +52,7 @@ class ContactFormConfirmation extends Mailable
 
     /**
      * Get the attachments for the message.
+     * Define los archivos adjuntos del correo (si los hay)
      *
      * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */

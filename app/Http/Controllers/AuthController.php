@@ -8,15 +8,28 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * Controlador que maneja todos los procesos relacionados con la autenticación:
+ * registro, inicio de sesión y cierre de sesión
+ */
 class AuthController extends Controller
 {
-    // Mostrar formulario de registro
+    /**
+     * Muestra el formulario de registro de usuario
+     * 
+     * @return \Illuminate\View\View Vista del formulario de registro
+     */
     public function showRegisterForm()
     {
         return view('auth.register');
     }
 
-    // Procesar registro
+    /**
+     * Procesa la solicitud de registro de un nuevo usuario
+     * 
+     * @param Request $request Contiene los datos del formulario de registro
+     * @return \Illuminate\Http\RedirectResponse Redirección después del registro
+     */
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -42,13 +55,22 @@ class AuthController extends Controller
         return redirect()->route('dashboard');
     }
 
-    // Mostrar formulario de login
+    /**
+     * Muestra el formulario de inicio de sesión
+     * 
+     * @return \Illuminate\View\View Vista del formulario de login
+     */
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    // Procesar login
+    /**
+     * Procesa la solicitud de inicio de sesión
+     * 
+     * @param Request $request Contiene las credenciales de inicio de sesión
+     * @return \Illuminate\Http\RedirectResponse Redirección después del login
+     */
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -68,7 +90,12 @@ class AuthController extends Controller
         ])->withInput();
     }
 
-    // Logout
+    /**
+     * Cierra la sesión del usuario actual
+     * 
+     * @param Request $request La solicitud HTTP
+     * @return \Illuminate\Http\RedirectResponse Redirección a la página principal
+     */
     public function logout(Request $request)
     {
         Auth::logout();
