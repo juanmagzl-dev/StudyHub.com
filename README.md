@@ -18,10 +18,8 @@ StudyHub 2.0 es una aplicación web diseñada para ayudar a los estudiantes a or
 - **Gestión de Tareas**: Crea, edita, elimina y visualiza tareas académicas
 - **Sistema de Prioridades**: Clasifica tus tareas como baja, media o alta prioridad
 - **Estados de Progreso**: Seguimiento del estado de las tareas (pendiente, en progreso, completada)
-- **Fechas Límite**: Establece fechas de vencimiento para tus tareas
 - **Panel de Control**: Visualiza todas tus tareas en un dashboard intuitivo
 - **Autenticación de Usuarios**: Registro, inicio de sesión y gestión de sesiones
-- **Experiencia Personalizada**: Cada usuario gestiona únicamente sus propias tareas
 
 ## Tecnologías Utilizadas
 
@@ -36,7 +34,6 @@ StudyHub 2.0 es una aplicación web diseñada para ayudar a los estudiantes a or
 - Composer
 - MySQL
 - Servidor web (Apache/Nginx)
-- Node.js y NPM (para compilar assets)
 
 ## Instalación y Configuración
 
